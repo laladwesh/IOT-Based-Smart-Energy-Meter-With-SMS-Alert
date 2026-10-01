@@ -4,9 +4,14 @@ An ESP32-based smart energy meter that measures AC mains parameters with a PZEM-
 
 This project was developed as the Design Lab project for the course EE 396 at the Indian Institute of Technology Guwahati, under the guidance of Prof. Gaurav Trivedi ([https://iitg.ac.in/trivedi](https://iitg.ac.in/trivedi)).
 
-![Title image of the energy meter](Images/Title-Image-of-Energy-Meter.jpg)
+<p align="center">
+  <img src="Images/Title-Image-of-Energy-Meter.jpg" alt="Title image of the energy meter" width="700">
+</p>
 
-![Demo of the energy meter](Images/Energy-meter-demo.gif)
+<p align="center">
+  <img src="Images/Energy-meter-demo.gif" alt="Demo of the energy meter" width="700"><br>
+  <em>Demo of the working energy meter</em>
+</p>
 
 ## Table of Contents
 
@@ -18,14 +23,15 @@ This project was developed as the Design Lab project for the course EE 396 at th
 6. [How It Works](#how-it-works)
 7. [Firmware Walkthrough](#firmware-walkthrough)
 8. [Web Dashboard](#web-dashboard)
-9. [SMS Alerts](#sms-alerts)
-10. [Setup and Installation](#setup-and-installation)
-11. [Repository Structure](#repository-structure)
-12. [Safety Notes](#safety-notes)
-13. [Applications](#applications)
-14. [Future Improvements](#future-improvements)
-15. [FAQ](#faq)
-16. [Acknowledgements](#acknowledgements)
+9. [Results](#results)
+10. [SMS Alerts](#sms-alerts)
+11. [Setup and Installation](#setup-and-installation)
+12. [Repository Structure](#repository-structure)
+13. [Safety Notes](#safety-notes)
+14. [Applications](#applications)
+15. [Future Improvements](#future-improvements)
+16. [FAQ](#faq)
+17. [Acknowledgements](#acknowledgements)
 
 ## Overview
 
@@ -51,7 +57,10 @@ The firmware also detects when mains power is lost and immediately reports zeros
 
 ## System Architecture
 
-![Block diagram](Images/Block-Diagram.jpg)
+<p align="center">
+  <img src="Images/Block-Diagram.jpg" alt="Block diagram" width="700"><br>
+  <em>Figure 1: System block diagram</em>
+</p>
 
 ```
 AC Load
@@ -91,15 +100,20 @@ The PZEM-004T is a self-contained AC measurement module. Compared with building 
 
 The module provides isolation between the mains side and the UART side.
 
-![PZEM-004T module](Images/PZEM-Module.jpg)
-
-![PZEM-004T with CT](Images/Pzem-Module-with-CT.jpg)
-
-![Current transformer](Images/CT-Image.jpg)
+<table align="center">
+  <tr>
+    <td align="center"><img src="Images/PZEM-Module.jpg" alt="PZEM-004T module" width="300"><br><em>PZEM-004T module</em></td>
+    <td align="center"><img src="Images/Pzem-Module-with-CT.jpg" alt="PZEM-004T with CT" width="300"><br><em>PZEM-004T with its CT</em></td>
+    <td align="center"><img src="Images/CT-Image.jpg" alt="Current transformer" width="300"><br><em>External current transformer</em></td>
+  </tr>
+</table>
 
 ## Circuit and Wiring
 
-![Circuit diagram](Images/Circuit-Diagram.jpg)
+<p align="center">
+  <img src="Images/Circuit-Diagram.jpg" alt="Circuit diagram" width="700"><br>
+  <em>Figure 2: Circuit diagram showing the ESP32, PZEM-004T, external CT, load and I2C LCD</em>
+</p>
 
 | Connection | ESP32 pin |
 |------------|-----------|
@@ -116,7 +130,10 @@ Notes:
 - The PZEM-004T voltage terminals connect to live and neutral on the load side.
 - The TX of the PZEM goes to the RX pin of the ESP32 and vice versa. If you see no data, check that the pin pair is wired the way your firmware expects.
 
-![Real-time hardware setup](Images/Real-Time-Setup-of-Energy-Meter.jpg)
+<p align="center">
+  <img src="Images/Real-Time-Setup-of-Energy-Meter.jpg" alt="Real-time hardware setup" width="700"><br>
+  <em>Figure 3: Assembled prototype with a bulb as the load, the LCD and the live dashboard on a phone</em>
+</p>
 
 ## How It Works
 
@@ -180,7 +197,10 @@ Because the default broker is a public one, other people can publish or subscrib
 
 The dashboard is a single static file, [Dashboard.html](Dashboard.html). It uses the MQTT.js library for the broker connection and Chart.js for the charts, both loaded from a CDN.
 
-![Dashboard](Images/Dashboard.jpg)
+<p align="center">
+  <img src="Images/Dashboard.jpg" alt="Dashboard" width="700"><br>
+  <em>Figure 4: Web dashboard connected to the broker and showing live readings</em>
+</p>
 
 To use it:
 
@@ -191,11 +211,21 @@ To use it:
 
 The topic names in the `TOPICS` object near the top of the dashboard script must match those in the firmware.
 
-![Different ways of visualizing the output](Images/Visualizing-Output-in-Different-Ways.jpg)
+## Results
+
+The same readings are available in three places at once: the serial monitor, the web dashboard and the LCD. In the capture below the supply reads about 243 V at 49.9 Hz with a very light load.
+
+<p align="center">
+  <img src="Images/Visualizing-Output-in-Different-Ways.jpg" alt="Serial monitor, IoT dashboard and LCD output" width="600"><br>
+  <em>Figure 5: Output on the serial monitor (top), IoT dashboard (middle) and LCD (bottom)</em>
+</p>
 
 ## SMS Alerts
 
-![SMS alert](Images/SMS-Image.jpg)
+<p align="center">
+  <img src="Images/SMS-Image.jpg" alt="SMS alert received on a phone" width="350"><br>
+  <em>Figure 6: SMS alert received on the phone</em>
+</p>
 
 SMS delivery uses the Circuit Digest Cloud API. The firmware sends an HTTPS POST to:
 
