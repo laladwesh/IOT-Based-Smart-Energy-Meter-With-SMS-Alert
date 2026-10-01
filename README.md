@@ -31,7 +31,8 @@ This project was developed as the Design Lab project for the course EE 396 at th
 14. [Applications](#applications)
 15. [Future Improvements](#future-improvements)
 16. [FAQ](#faq)
-17. [Acknowledgements](#acknowledgements)
+17. [Team](#team)
+18. [Acknowledgements](#acknowledgements)
 
 ## Overview
 
@@ -344,6 +345,13 @@ Yes. When voltage reads below 10 V or is invalid, all instantaneous readings are
 
 **Why do the values show zero when the load is off?**
 The firmware deliberately zeroes voltage, current, power, frequency and power factor when no supply is present, so that old values are never displayed. Accumulated energy is retained.
+
+## Team
+
+| Name | Programme | Roll Number |
+|------|-----------|-------------|
+| Avinash Gupta | B.Tech, Electronics and Communication Engineering (ECE) | 230102013 |
+| Arunika Naskar | B.Tech, Electronics and Electrical Engineering (EEE) | 230108009 |
 
 ## Acknowledgements
 
